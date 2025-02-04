@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/codewithmuh/three-tier-devsecops-project.git'
+                git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/sujith333333/three-tier-application.git'
             }
         }
         stage('Sonarqube Analysis') {
@@ -27,11 +27,11 @@ pipeline {
                 dir('app-code/backend') {
                     withSonarQubeEnv('sonar-server') {
                         sh ''' 
-                            $SCANNER_HOME/bin/sonar-scanner \
-                            -Dsonar.projectKey=backend \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=http://44.244.210.204:9000 \
-                            -Dsonar.login=sqp_5940b2eeea33d0e4f873243a7a1f988ab74dd112
+                           $SCANNER_HOME/bin/sonar-scanner \
+                           -Dsonar.projectKey=back-end \
+                           -Dsonar.sources=. \
+                           -Dsonar.host.url=http://52.53.221.205:9000 \
+                           -Dsonar.login=sqp_11cac14ac37bb938e073b7be979b954c9ce02dda
                         '''
                     }
                 }

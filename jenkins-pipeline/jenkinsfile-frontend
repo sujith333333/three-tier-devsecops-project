@@ -27,11 +27,11 @@ pipeline {
                 dir('app-code/frontend/notes-frontend') {
                     withSonarQubeEnv('sonar-server') {
                         sh ''' 
-                            $SCANNER_HOME/bin/sonar-scanner \
-                            -Dsonar.projectKey=frontend \
-                            -Dsonar.sources=. \
-                            -Dsonar.host.url=http://44.244.210.204:9000 \
-                            -Dsonar.login=sqp_28cec81454b231cb6e7548987c134fe9213a0e93
+                           $SCANNER_HOME/bin/sonar-scanner \
+                           -Dsonar.projectKey=front-end \
+                           -Dsonar.sources=. \
+                           -Dsonar.host.url=http://52.53.221.205:9000 \
+                           -Dsonar.login=sqp_7d2a3a1da9924152e77e3959d462fd12c996d64e
                         '''
                     }
                 }
