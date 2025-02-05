@@ -96,7 +96,7 @@ pipeline {
             }
             steps {
                 dir('kubernetes-manifests/frontend') {
-                    withCredentials([string(credentialsId: 'github', variable: 'GITHUB')]) {
+                    withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                         // First, list the files in the directory to check if deployment.yaml exists
                         sh '''
                             echo "Listing files in kubernetes-manifests/frontend directory:"
@@ -107,7 +107,7 @@ pipeline {
                             git config user.name "sujith333333"
                             BUILD_NUMBER=${BUILD_NUMBER}
                             echo $BUILD_NUMBER
-                            imageTag=$(grep -oP '(?<=frontend:)[^ ]+' deployment.yaml)
+                            imageTag=$(grep -oP 'frontend:\s*([^\s]+)' deployment.yaml)
                             echo $imageTag
                             sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
                             git add deployment.yaml
